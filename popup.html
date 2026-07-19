@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weave</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="weave-container">
+    <!-- Header -->
+    <header class="weave-header">
+      <div class="weave-brand">
+        <img src="icons/icon48.png" alt="Weave" class="weave-logo-img" />
+        <span class="weave-title">Weave</span>
+      </div>
+      <div class="weave-status">
+        <div class="status-dot" id="statusDot"></div>
+        <span class="status-text" id="statusText">Active</span>
+      </div>
+    </header>
+
+    <!-- Tabs -->
+    <nav class="weave-tabs">
+      <button class="tab-btn active" data-tab="transform">Transform</button>
+      <button class="tab-btn" data-tab="read">Read</button>
+      <button class="tab-btn" data-tab="fonts">Typography</button>
+      <button class="tab-btn" data-tab="about">About</button>
+    </nav>
+
+    <!-- Transform Tab -->
+    <div class="tab-content active" id="tab-transform">
+      <div class="section">
+        <div class="section-header">
+          <span class="section-title">Text Replacements</span>
+          <span class="section-badge" id="replaceCount">0 active</span>
+        </div>
+        <div class="replace-list" id="replaceList">
+          <div class="replace-row">
+            <input type="text" class="replace-input" placeholder="Find" data-find />
+            <svg class="replace-arrow" viewBox="0 0 16 16" width="16" height="16">
+              <path d="M1 8h12M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+            <input type="text" class="replace-input" placeholder="Replace" data-replace />
+            <button class="replace-toggle" data-toggle>
+              <svg width="14" height="14" viewBox="0 0 16 16">
+                <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <button class="replace-delete" data-delete>
+              <svg width="14" height="14" viewBox="0 0 16 16">
+                <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <button class="btn btn-secondary btn-full" id="addReplace">
+          <svg width="14" height="14" viewBox="0 0 16 16">
+            <path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+          Add Replacement
+        </button>
+      </div>
+      <div class="section">
+        <label class="toggle-row">
+          <span class="toggle-label">Enable on this page</span>
+          <label class="toggle">
+            <input type="checkbox" id="enabledToggle" checked />
+            <span class="toggle-slider"></span>
+          </label>
+        </label>
+      </div>
+    </div>
+
+    <!-- Reading Tab -->
+    <div class="tab-content" id="tab-read">
+      <div class="section">
+        <div class="section-header">
+          <span class="section-title">Reading Mode</span>
+        </div>
+        <div class="theme-grid">
+          <button class="theme-btn" data-theme="default">
+            <div class="theme-preview" style="background:#fff;border:1px solid #e5e7eb;"></div>
+            <span>Default</span>
+          </button>
+          <button class="theme-btn" data-theme="dark">
+            <div class="theme-preview" style="background:#1a1a2e;"></div>
+            <span>Dark</span>
+          </button>
+          <button class="theme-btn" data-theme="sepia">
+            <div class="theme-preview" style="background:#fbf0d9;"></div>
+            <span>Sepia</span>
+          </button>
+          <button class="theme-btn" data-theme="mono">
+            <div class="theme-preview" style="background:#f5f5f5;"></div>
+            <span>Mono</span>
+          </button>
+          <button class="theme-btn" data-theme="noir">
+            <div class="theme-preview" style="background:#000;"></div>
+            <span>Noir</span>
+          </button>
+          <button class="theme-btn" data-theme="forest">
+            <div class="theme-preview" style="background:#1b3a2b;"></div>
+            <span>Forest</span>
+          </button>
+        </div>
+      </div>
+      <div class="section">
+        <label class="toggle-row">
+          <span class="toggle-label">Code block enhancement</span>
+          <label class="toggle">
+            <input type="checkbox" id="codeEnhance" />
+            <span class="toggle-slider"></span>
+          </label>
+        </label>
+      </div>
+    </div>
+
+    <!-- Typography Tab -->
+    <div class="tab-content" id="tab-fonts">
+      <div class="section">
+        <div class="section-header">
+          <span class="section-title">Typography</span>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Font Size</label>
+          <div class="control-row">
+            <input type="range" class="range" id="fontSize" min="60" max="150" value="100" />
+            <span class="range-value" id="fontSizeValue">100%</span>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Line Height</label>
+          <div class="control-row">
+            <input type="range" class="range" id="lineHeight" min="100" max="200" value="150" />
+            <span class="range-value" id="lineHeightValue">1.5</span>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Letter Spacing</label>
+          <div class="control-row">
+            <input type="range" class="range" id="letterSpacing" min="0" max="5" value="0" step="0.5" />
+            <span class="range-value" id="letterSpacingValue">0px</span>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Max Width</label>
+          <div class="control-row">
+            <input type="range" class="range" id="maxWidth" min="400" max="1200" value="720" step="20" />
+            <span class="range-value" id="maxWidthValue">720px</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Tab -->
+    <div class="tab-content" id="tab-about">
+      <div class="section about-section">
+        <div class="about-logo">
+          <img src="icons/icon128.png" alt="Weave" class="about-logo-img" />
+        </div>
+        <p class="about-text">
+          Weave transforms any webpage to match how you want to read. Custom text replacements, reading modes, and typography controls — all in one extension.
+        </p>
+        <div class="about-links">
+          <a href="https://github.com/cuqz/weave" target="_blank" class="about-link">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+            GitHub
+          </a>
+          <span class="about-version">v1.0.0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="weave-footer">
+      <button class="btn btn-primary btn-full" id="resetBtn">
+        <svg width="14" height="14" viewBox="0 0 16 16">
+          <path d="M2 8a6 6 0 0110.47-4M14 2v4h-4M14 8a6 6 0 01-10.47 4M2 14v-4h4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        </svg>
+        Reset Page
+      </button>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
