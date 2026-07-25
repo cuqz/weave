@@ -22,6 +22,7 @@
   --green: #5a9e6f;
   --red: #c05a5a;
   --radius: 10px;
+  --radius-pill: 4px;
   --radius-sm: 6px;
   --font: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
