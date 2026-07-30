@@ -1,125 +1,68 @@
-# Weave — Page Transformer
+# Weave
 
-> Transform any webpage to match how you want to read, work, and focus.
+A browser extension that lets you change how any webpage looks and reads. Replace text, switch themes, tweak fonts — whatever helps you actually focus on what you're reading.
 
-![License](https://img.shields.io/badge/license-MIT-blue)
-![Version](https://img.shields.io/badge/version-1.0.0-violet)
-![Chrome](https://img.shields.io/badge/chrome-120+-brightgreen)
-![Manifest](https://img.shields.io/badge/manifest-v3-important)
+Built for Hack Club Widget YSWS.
 
 ---
 
-## ✨ Features
+## What it does
 
-### 🔄 Text Replacement
-Replace any text on any webpage — custom word swaps, inside jokes, accessibility tweaks, or language substitutions. Multiple replacements run simultaneously with per-rule toggles.
+**Text replacement** — Swap any word or phrase on any page. I use it to replace "the cloud" with "someone else's computer" but you do you. Multiple replacements run at the same time and you can toggle each one on/off.
 
-### 🎨 Reading Modes
-Six carefully crafted themes:
-| Theme | Vibe |
-|-------|------|
-| **Default** | Original page styles |
-| **Dark** | Inverted, easy on the eyes |
-| **Sepia** | Warm, book-like reading |
-| **Mono** | Distraction-free grayscale |
-| **Noir** | High contrast, dramatic |
-| **Forest** | Calm green tones |
+**Reading themes** — Six themes: Default, Dark, Sepia (warm tones, good for reading articles), Mono (grayscale, no distractions), Noir (high contrast), Forest (green, calm). I mostly use Sepia for docs.
 
-### 📐 Typography Controls
-Fine-tune how pages read:
-- Font size (60%–150%)
-- Line height (1.0–2.0)
-- Letter spacing (0–5px)
-- Max width (400–1200px)
+**Typography controls** — Font size, line height, letter spacing, max width. Some sites have terrible typography so this lets you override it.
 
-### 💻 Code Block Enhancer
-Enable to add copy buttons and language badges to code blocks on any site. Works with GitHub, documentation, blogs, and more.
+**Code block enhancer** — Adds a copy button + language badge to code blocks on GitHub, docs sites, blogs. Works automatically.
 
-### 🧠 Per-Site Settings
-Your preferences are saved per domain. Set up different rules for different sites — they persist between visits.
+**Per-site settings** — Every setting saves per domain. So you can have different text replacements on Twitter vs Reddit vs docs. They stick around when you come back.
 
-### ⚡ Keyboard Shortcut
-`Ctrl+Shift+W` (Windows/Linux) or `Cmd+Shift+W` (Mac) to open Weave instantly.
+**Keyboard shortcut** — `Ctrl+Shift+W` (Windows) or `Cmd+Shift+W` (Mac) pops it open.
 
 ---
 
-## 🚀 Installation
+## How to install
 
-### Developer Mode (current)
-1. Download or clone this repo:
-   ```bash
-   git clone https://github.com/cuqz/weave.git
-   ```
-2. Open Chrome and go to `chrome://extensions`
-3. Enable **Developer mode** (top right toggle)
-4. Click **Load unpacked**
-5. Select the `weave` folder
+1. Clone or download this repo
+2. Go to `chrome://extensions`
+3. Toggle **Developer mode** (top right)
+4. Click **Load unpacked** and pick the folder
 
-### Chrome Web Store (coming soon)
-Once published, you'll be able to install with one click from the Chrome Web Store.
+That's it. No build step, no npm install, nothing.
 
 ---
 
-## 🛠 Usage
+## How to use
 
-1. Click the Weave icon in your toolbar (or press `Ctrl+Shift+W`)
-2. **Transform** tab: Add text replacements (e.g., "JavaScript" → "JS")
-3. **Read** tab: Choose a reading theme, toggle code enhancement
-4. **Typography** tab: Adjust font size, line height, spacing, max width
-5. Toggle the extension on/off per page using the switch
+Click the icon in your toolbar or hit the keyboard shortcut. The popup has three tabs:
 
-All changes apply instantly. Settings are saved per domain.
+- **Transform** — Add text replacements. Type what you want to replace and what you want it to become.
+- **Read** — Pick a theme and toggle code enhancement.
+- **Typography** — Adjust font size, line height, spacing, width.
+
+Everything applies instantly. Settings save per domain automatically.
 
 ---
 
-## 📁 Project Structure
+## Project structure
 
 ```
 weave/
-├── manifest.json        # Extension manifest (MV3)
-├── popup.html           # Popup interface
-├── popup.css            # Popup styles (glassmorphism)
-├── popup.js             # Popup logic & state management
-├── content.js           # Content script (transformations)
-├── background.js        # Service worker
-├── icons/               # Extension icons
-├── README.md            # This file
-└── LICENSE              # MIT license
+├── manifest.json       # Extension manifest v3
+├── popup.html          # The popup you see when clicking the icon
+├── popup.css           # Styles for the popup
+├── popup.js            # Popup logic, state, settings handling
+├── content.js          # Runs on pages — does the actual transforms
+├── background.js       # Service worker
+├── icons/              # Icons for the extension
+├── README.md           # This
+└── LICENSE             # MIT
 ```
 
----
+## Dev stuff
 
-## 🧪 Development
-
-```bash
-# No build step required — vanilla JS, works out of the box.
-# Load as unpacked extension in Chrome.
-```
-
-To modify the popup UI, edit `popup.html`, `popup.css`, and `popup.js`.
-To change how pages are transformed, edit `content.js`.
+No build tools. No framework. Just vanilla JS. Open the files, edit, reload the extension in `chrome://extensions`. That's the whole workflow.
 
 ---
-
-## 📸 Screenshots
-
-> *Add screenshots here before submitting*
-
-1. **Popup** — The main control panel with tabs
-2. **Text Replacement** — Active replacements in action
-3. **Reading Mode** — Sepia theme applied to a documentation page
-4. **Code Enhancement** — Copy button and language badge on code blocks
-
----
-
-## 📝 License
-
-MIT — see [LICENSE](LICENSE).
-
----
-
-## 🙌 Made for Hack Club Widget
-
-Built as part of the [Widget YSWS](https://widget.hackclub.com/) — build a browser extension, ship it, get hardware.
-
-[![Hack Club](https://img.shields.io/badge/Hack%20Club-Widget-violet)](https://widget.hackclub.com/)
+MIT license.
